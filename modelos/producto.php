@@ -18,7 +18,7 @@ function producto_recomendado(){
     return recorrer($query);
 }
 
-function ingresar_producto(){
+function ingresar_producto($img, $titulo, $descrip, $precio){
     global $con;
-    $con->query("INSERT INTO producto () VALUES () ");
+    $con->query("INSERT INTO producto ( imagen, titulo, descripcion, precio ) VALUES ( '$img' , '$titulo' , '$descrip' , '$precio' ) ");
 }

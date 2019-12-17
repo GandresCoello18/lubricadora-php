@@ -4,11 +4,29 @@ $title = 'Admin | Registrar producto';
 include_once('componentes/header.php');
 
     if(isset($_POST['guardar_product'])){
+        $dato_producto = [$_POST['titutlo'], $_POST['precio'], $_POST['descripcion'] ];
+
+        $status = true;
+        for($i = 0; $i < count($dato_producto); $i++){
+            if($dato_producto[$i] == null || $dato_producto[$i] == ''){
+                $status = false;
+                break;
+            }else{
+                $dato_producto[$i] = htmlspecialchars($dato_producto[$i]);
+            }
+        }
+
+        if($status == true){
+
         $destino = 'img/productos/';
         $nombre = $_FILES['imagen']['name'];
         $tmp = $_FILES['imagen']['tmp_name'];
-        echo $nombre;
         move_uploaded_file($tmp, $destino . $nombre);
+
+            ingresar_producto($nombre, $dato_producto[0], $dato_producto[2], $dato_producto[1] );
+        }else{
+            echo "<script>alert('Campos vacios, vuelva a intentarlo')</script>";
+        }
     }
 
 ?>

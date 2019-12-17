@@ -5,6 +5,7 @@
     require('modelos/producto.php');
     require('modelos/ventas.php');
     require('modelos/admin.php');
+    require('modelos/servicio.php');
     session_start();
 ?>
 
